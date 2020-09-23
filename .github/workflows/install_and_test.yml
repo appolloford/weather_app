@@ -1,0 +1,14 @@
+name: install_and_test on: [push]
+jobs:
+  install_job:
+    runs-on: ubuntu-latest 
+    steps:
+      - uses: actions/checkout@v2 
+        with:
+          ref: 'main'
+      - uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+      - run: pip install .
+      - run: pip install pytest
+      - run: pytest test/

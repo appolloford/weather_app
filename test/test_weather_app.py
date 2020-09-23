@@ -13,6 +13,8 @@ def test_temperature_forecast():
     hours.
     """
     lat, lon = lookup_location()
+    lat = 57.7089
+    lon = 11.9746
     forecast = SMHIForecast(lat, lon)
 
     t_0 = (forecast.time[1] - forecast.reference_time).total_seconds() / 3600

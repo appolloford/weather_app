@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Api &#8212; weather_app 0.0.1 documentation</title>
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Api_reference" href="../api_reference.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="module-weather_app.api">
+<span id="api"></span><h1>Api<a class="headerlink" href="#module-weather_app.api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="the-weather-app-api-module">
+<h2>The weather_app.api module<a class="headerlink" href="#the-weather-app-api-module" title="Permalink to this headline">¶</a></h2>
+<p>This module contains the SMHIForecast class, which provides access to
+to the SMHI forecast web API. Furthermore, the module provides the
+lookup_location() function, which can be used to determine the latitude
+and longitude coordinates of the system executing the function.</p>
+<dl class="py class">
+<dt id="weather_app.api.SMHIForecast">
+<em class="property">class </em><code class="sig-prename descclassname">weather_app.api.</code><code class="sig-name descname">SMHIForecast</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">latitude</span></em>, <em class="sig-param"><span class="n">longitude</span></em><span class="sig-paren">)</span><a class="headerlink" href="#weather_app.api.SMHIForecast" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>SMHI weather forecast.</p>
+<p>This class provides an interfact to the current SMHI weather forecast.
+A single forecast contains predictions for the next 10 days at varying
+temporal resolution.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>reference_time(datetime.datetime): The time at which the forecast was
+produced.
+time(list): The times, given as datetime.datetime objects, of the
+predictions in this forecasts.
+temperature(list): The predicted temperature in deg. C.
+cloud_cover(list): The predicted cloud cover given as fraction in [0, 1].
+precipitation(list): The predicted mean precipitation intensity in mm/h.
+symbol(list): Symbolic representation of weather situtation. See
+<a class="reference external" href="https://opendata.smhi.se/apidocs/metfcst/parameters.html#27symbols">opendata.smhi.se</a> for reference.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="py method">
+<dt id="weather_app.api.SMHIForecast.interpolate">
+<code class="sig-name descname">interpolate</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">hours</span></em>, <em class="sig-param"><span class="n">variable</span><span class="o">=</span><span class="default_value">'temperature'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#weather_app.api.SMHIForecast.interpolate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Interpolate forecast variable to given times.</p>
+<dl class="simple">
+<dt>Params:</dt><dd><p>hours(1D array): 1-dimensional array containing the time in hours after
+the forecasts reference time.
+variable(str): String containing the attribute name to interpolate
+to the given times.</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>1D array containing the predicted values of the variable for the given
+times.</p>
+</dd>
+</dl>
+<dl class="simple">
+<dt>Throws:</dt><dd><p>ValueError when the variable is not an attribute of the SMHIForecast
+class</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="weather_app.api.lookup_location">
+<code class="sig-prename descclassname">weather_app.api.</code><code class="sig-name descname">lookup_location</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#weather_app.api.lookup_location" title="Permalink to this definition">¶</a></dt>
+<dd><p>Geolocation lookup of current position.</p>
+<p>Determines latitude and longitude coordinates of the system’s position
+using the ipinfo.io service.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Tuple (lat, lon) containing the latitude and longitude coordinates
+associated with the IP from which the request is performed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">weather_app</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api_reference.html">Api_reference</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Api</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="../api_reference.html">Api_reference</a><ul>
+      <li>Previous: <a href="../api_reference.html" title="previous chapter">Api_reference</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, Chia-Jung Hsu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/api_reference/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
